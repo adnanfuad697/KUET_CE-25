@@ -36,8 +36,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* ── Blueprint Grid Background ── */
   .blueprint-bg {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background-image:
@@ -48,18 +46,13 @@
     background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
   }
   .blueprint-bg::after {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,229,255,0.06) 0%, transparent 70%),
                 radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255,107,26,0.04) 0%, transparent 60%);
   }
-
-  /* ── Header ── */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(4,11,20,0.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(4,11,20,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
   }
   .header-inner {
     max-width: 1280px; margin: 0 auto; padding: 0 24px;
@@ -75,30 +68,22 @@
   .header-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; display: flex; align-items: center; gap: 6px; }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-
-  /* ── Main Layout ── */
   .main-wrap { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 32px 24px 80px; }
   .page-hero { margin-bottom: 40px; }
   .page-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4vw, 48px); font-weight: 700; line-height: 1.1; color: var(--text-primary); letter-spacing: 0.02em; }
   .page-hero h1 span { color: var(--cyan); }
   .page-hero p { margin-top: 8px; color: var(--text-secondary); font-size: 14px; font-family: 'JetBrains Mono', monospace; }
-
-  /* ── Stats Row ── */
   .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 32px; }
   .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; position: relative; overflow: hidden; }
   .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: opacity 0.3s; }
   .stat-card:hover::before { opacity: 1; }
   .stat-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
   .stat-card .value { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; color: var(--cyan); }
-
-  /* ── Tab Navigation ── */
   .tab-bar { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
   .tab-btn { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; padding: 10px 20px; border: none; background: none; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; border-radius: 6px 6px 0 0; }
   .tab-btn:hover { color: var(--text-secondary); background: rgba(0,229,255,0.04); }
   .tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
   .tab-count { font-family: 'JetBrains Mono', monospace; font-size: 10px; background: var(--cyan-glow); color: var(--cyan); border: 1px solid rgba(0,229,255,0.2); padding: 1px 6px; border-radius: 10px; }
-
-  /* ── Search + Actions Bar ── */
   .actions-bar { display: flex; gap: 12px; margin-bottom: 24px; align-items: center; flex-wrap: wrap; }
   .search-wrap { flex: 1; min-width: 200px; position: relative; }
   .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 16px; height: 16px; }
@@ -107,13 +92,9 @@
   .search-input::placeholder { color: var(--text-muted); }
   .add-btn { display: flex; align-items: center; gap: 8px; background: var(--cyan); color: #000; font-weight: 600; font-family: 'Space Grotesk', sans-serif; font-size: 13px; border: none; border-radius: 8px; padding: 10px 18px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
   .add-btn:hover { background: var(--cyan-dim); transform: translateY(-1px); }
-
-  /* ── Tab Content Panels ── */
   .tab-panel { display: none; }
   .tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-
-  /* ── Notice Cards ── */
   .notice-list { display: flex; flex-direction: column; gap: 12px; }
   .notice-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
   .notice-card:hover { border-color: var(--border-hover); transform: translateX(3px); }
@@ -130,8 +111,6 @@
   .badge.pdf { color: var(--orange); border-color: rgba(255,107,26,0.3); background: rgba(255,107,26,0.08); }
   .badge.link { color: var(--cyan); border-color: rgba(0,229,255,0.3); background: rgba(0,229,255,0.08); }
   .badge.cat { color: var(--text-muted); border-color: rgba(74,96,128,0.3); background: rgba(74,96,128,0.08); }
-
-  /* ── Resources Table ── */
   .resources-grid { display: flex; flex-direction: column; gap: 8px; }
   .resource-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 20px; display: grid; grid-template-columns: 2fr 2fr 1fr 1fr auto; gap: 16px; align-items: center; }
   .resource-row.header-row { background: transparent; border-color: transparent; padding: 6px 20px; border-bottom: 1px solid var(--border); border-radius: 0; margin-bottom: 4px; }
@@ -141,8 +120,6 @@
   .res-date { font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
   .icon-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; cursor: pointer; color: var(--text-secondary); font-size: 11px; display: flex; align-items: center; gap: 4px; transition: all 0.2s; }
   .icon-btn:hover { border-color: var(--cyan-dim); color: var(--cyan); }
-
-  /* ── Family Grid ── */
   .family-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .profile-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.25s; }
   .profile-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
@@ -153,8 +130,6 @@
   .social-links { display: flex; gap: 8px; justify-content: center; }
   .social-btn { border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; color: var(--text-muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; gap: 4px; }
   .social-btn.fb:hover { border-color: #1877f2; color: #1877f2; background: rgba(24,119,242,0.05); }
-
-  /* ── Modal & Toasts ── */
   .modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(4,11,20,0.85); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 24px 28px; transform: translateY(20px); transition: transform 0.25s; }
@@ -163,22 +138,16 @@
   .form-label { display: block; font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
   .form-input, .form-select, .form-textarea { width: 100%; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text-primary); font-size: 14px; outline: none; }
   .form-input:focus, .form-textarea:focus { border-color: var(--cyan); }
-  
-  /* Document View Container */
   #docViewerModal { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 16px; }
   #docViewerModal.hidden { display: none; }
-
   .toast { position: fixed; bottom: 24px; right: 24px; z-index: 3000; background: var(--bg-card); border: 1px solid var(--cyan); border-radius: 10px; padding: 14px 20px; transform: translateY(100px); opacity: 0; transition: all 0.3s; }
   .toast.show { transform: translateY(0); opacity: 1; }
-
   .skeleton { background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-surface) 50%, var(--bg-card) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
   @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
   .btn-cancel { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; cursor: pointer; color: var(--text-secondary); font-size: 13px; transition: all 0.2s; }
   .btn-cancel:hover { border-color: var(--slate-light); color: var(--text-primary); }
   .btn-submit { background: var(--cyan); border: none; border-radius: 8px; padding: 10px 22px; cursor: pointer; color: #000; font-weight: 600; font-size: 13px; transition: all 0.2s; }
   .btn-submit:hover { background: var(--cyan-dim); }
-
   @media (max-width: 768px) {
     .resource-row { grid-template-columns: 1fr; gap: 6px; }
     .resource-row.header-row { display: none; }
@@ -257,31 +226,36 @@
   </div>
 </div>
 
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleSubmissionSuccess(); }"></iframe>
+
 <div class="modal-overlay" id="form-modal">
   <div class="modal">
     <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
       <h2 id="modal-title-text" class="text-xl font-bold text-cyan-400">Submit Data</h2>
       <button onclick="closeFormModal()" class="text-red-400 font-bold">✕</button>
     </div>
-    <form id="submissionForm" onsubmit="handleFormSubmit(event)">
+    <form id="submissionForm" method="POST" target="hidden_iframe">
       <div id="dynamic-form-fields"></div>
       <div class="flex justify-end gap-3 mt-6">
         <button type="button" onclick="closeFormModal()" class="btn-cancel">Cancel</button>
-        <button type="submit" class="btn-submit" id="submitFormBtn">Submit to Admin</button>
+        <button type="submit" onclick="submitted=true" class="btn-submit" id="submitFormBtn">Submit to Admin</button>
       </div>
     </form>
   </div>
 </div>
 
 <script>
-  // ⚡ তোর নতুন সফল লাইভ স্ক্রিপ্ট ইউআরএল এখানে সেট করে দেওয়া হলো
+  // ⚡ তোর লেটেস্ট সফল আইডি-লকড গুগল স্ক্রিপ্ট লিঙ্ক
   const CONFIG = {
-    GAS_URL: 'https://script.google.com/macros/s/AKfycbzapc9T2_INVIIPkkYMoAvHC0VQGN_ZH6M1OkxYm4ylOUZfzxzuDAHHFNw1L826scka/exec'
+    GAS_URL: 'https://script.google.com/macros/s/AKfycbz-mPtYWh0KOAg-1pHBU96xMQT4Kz0Q_IWUVDS0uRvwj8ZbZsG99MB6Ak3SmCDgrHjC/exec'
   };
 
   let currentTab = 'notices';
   let serverData = { notices: [], resources: [], family: [] };
   let searchQuery = "";
+  let submitted = false; 
+
+  document.getElementById('submissionForm').action = CONFIG.GAS_URL;
 
   function getMonthShort(dateStr) {
     if(!dateStr) return "MAY";
@@ -314,25 +288,30 @@
         serverData = result.data;
       }
     } catch (err) {
-      console.log("Error loading data from sheet backend.", err);
+      console.log("Error loading data.", err);
     }
     updateUI();
   }
 
   function showSkeletons() {
-    document.getElementById('notices-list').innerHTML = `<div class="skeleton h-24 w-full mb-3"></div><div class="skeleton h-24 w-full"></div>`;
-    document.getElementById('resources-list').innerHTML = `<div class="skeleton h-12 w-full mb-2"></div><div class="skeleton h-12 w-full"></div>`;
+    document.getElementById('notices-list').innerHTML = `<div class="skeleton h-24 w-full mb-3"></div>`;
+    document.getElementById('resources-list').innerHTML = `<div class="skeleton h-12 w-full mb-2"></div>`;
     document.getElementById('family-list').innerHTML = `<div class="skeleton h-48 w-full"></div>`;
   }
 
   function updateUI() {
-    document.getElementById('cnt-notices').innerText = serverData.notices.length;
-    document.getElementById('cnt-resources').innerText = serverData.resources.length;
-    document.getElementById('cnt-family').innerText = serverData.family.length;
+    // শুধুমাত্র এপ্রুভড ডেটার ওপর বেস করে কাউন্টার ও স্ট্যাটস আপডেট হবে
+    const activeNotices = serverData.notices.filter(item => !(item.status && item.status.toLowerCase() === 'pending')).length;
+    const activeResources = serverData.resources.filter(item => !(item.status && item.status.toLowerCase() === 'pending')).length;
+    const activeFamily = serverData.family.filter(item => !(item.status && item.status.toLowerCase() === 'pending')).length;
 
-    document.getElementById('stat-notices').innerText = serverData.notices.length;
-    document.getElementById('stat-resources').innerText = serverData.resources.length;
-    document.getElementById('stat-family').innerText = serverData.family.length;
+    document.getElementById('cnt-notices').innerText = activeNotices;
+    document.getElementById('cnt-resources').innerText = activeResources;
+    document.getElementById('cnt-family').innerText = activeFamily;
+
+    document.getElementById('stat-notices').innerText = activeNotices;
+    document.getElementById('stat-resources').innerText = activeResources;
+    document.getElementById('stat-family').innerText = activeFamily;
 
     renderCurrentTab();
   }
@@ -341,10 +320,8 @@
     currentTab = tabName;
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     event.currentTarget.classList.add('active');
-    
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${tabName}`).classList.add('active');
-    
     renderCurrentTab();
   }
 
@@ -355,7 +332,12 @@
 
   function renderCurrentTab() {
     const listData = serverData[currentTab] || [];
+    
+    // 🔥 সিকিউর এপ্রুভাল ফিল্টার: pending ডেটাগুলো ওয়েবসাইট থেকে ব্লকড থাকবে
     const filtered = listData.filter(item => {
+      if (item.status && item.status.toLowerCase() === 'pending') {
+        return false; 
+      }
       const searchStr = Object.values(item).join(' ').toLowerCase();
       return searchStr.includes(searchQuery);
     });
@@ -379,9 +361,8 @@
             </div>
           </div>`;
       });
-      document.getElementById('notices-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No notices found.</p>';
+      document.getElementById('notices-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No approved notices found.</p>';
     } 
-    
     else if (currentTab === 'resources') {
       let html = `<div class="resource-row header-row"><span>Subject</span><span>Topic</span><span>Date</span><span>Type</span><span>Actions</span></div>`;
       filtered.forEach(r => {
@@ -396,9 +377,8 @@
             </div>
           </div>`;
       });
-      document.getElementById('resources-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No notes found.</p>';
+      document.getElementById('resources-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No approved notes found.</p>';
     } 
-    
     else if (currentTab === 'family') {
       let html = '';
       filtered.forEach(f => {
@@ -408,14 +388,14 @@
             <div class="avatar">${initials}</div>
             <div class="profile-name">${f.name}</div>
             <div class="profile-meta">Roll: ${f.roll}</div>
-            <div class="profile-meta">Merit Position: ${f.merit || 'N/A'}</div>
+            <div class="profile-meta">Merit: ${f.merit || 'N/A'}</div>
             <div class="merit-badge">KUET CE '25</div>
             <div class="social-links">
               ${f.fb ? `<a href="${f.fb}" target="_blank" class="social-btn fb">🌐 Facebook</a>` : ''}
             </div>
           </div>`;
       });
-      document.getElementById('family-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No batchmates found.</p>';
+      document.getElementById('family-list').innerHTML = html || '<p class="text-center py-6 text-gray-500">No approved batchmates found.</p>';
     }
   }
 
@@ -433,34 +413,32 @@
   function openFormModal() {
     document.getElementById('modal-title-text').innerText = `Add Data to [${currentTab.toUpperCase()}]`;
     let fieldsHtml = `<input type="hidden" name="sheet" value="${currentTab}">`;
-    fieldsHtml += `<input type="hidden" name="status" value="pending">`;
     
     if (currentTab === 'notices') {
       fieldsHtml += `
-        <div class="form-group"><label class="form-label">Notice Title</label><input type="text" name="title" class="form-input" required placeholder="e.g. Class Test 1 Schedule"></div>
-        <div class="form-group"><label class="form-label">Category</label><input type="text" name="category" class="form-input" placeholder="Exam, Lab, Tour etc."></div>
-        <div class="form-group"><label class="form-label">Attachment Link (Drive/Web)</label><input type="url" name="link" class="form-input" placeholder="https://..."></div>
-        <div class="form-group"><label class="form-label">Description</label><textarea name="description" class="form-textarea" placeholder="Detailed details..."></textarea></div>
+        <div class="form-group"><label class="form-label">Notice Title</label><input type="text" name="title" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Category</label><input type="text" name="category" class="form-input"></div>
+        <div class="form-group"><label class="form-label">Attachment Link</label><input type="url" name="link" class="form-input"></div>
+        <div class="form-group"><label class="form-label">Description</label><textarea name="description" class="form-textarea"></textarea></div>
         <div class="form-group"><label class="form-label">Date</label><input type="date" name="date" class="form-input" required></div>
-        <div class="form-group"><label class="form-label">Urgent?</label><select name="urgent" class="form-select"><option value="false">No</option><option value="true">Yes (Orange Highlighting)</option></select></div>
+        <div class="form-group"><label class="form-label">Urgent?</label><select name="urgent" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div>
       `;
     } else if (currentTab === 'resources') {
       fieldsHtml += `
-        <div class="form-group"><label class="form-label">Subject Code / Name</label><input type="text" name="subject" class="form-input" required placeholder="e.g. CE 101"></div>
-        <div class="form-group"><label class="form-label">Topic Description</label><input type="text" name="topic" class="form-input" required placeholder="e.g. Fluid Mechanics Chapter 3 Notes"></div>
-        <div class="form-group"><label class="form-label">Resource Link (Drive/Web)</label><input type="url" name="link" class="form-input" required placeholder="https://..."></div>
-        <div class="form-group"><label class="form-label">File Type</label><input type="text" name="type" class="form-input" placeholder="PDF, Drive Link, Doc, ZIP"></div>
-        <div class="form-group"><label class="form-label">Upload Date</label><input type="date" name="date" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Subject</label><input type="text" name="subject" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Topic</label><input type="text" name="topic" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Resource Link</label><input type="url" name="link" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">File Type</label><input type="text" name="type" class="form-input" placeholder="PDF/ZIP"></div>
+        <div class="form-group"><label class="form-label">Date</label><input type="date" name="date" class="form-input" required></div>
       `;
     } else if (currentTab === 'family') {
       fieldsHtml += `
-        <div class="form-group"><label class="form-label">Full Name</label><input type="text" name="name" class="form-input" required placeholder="Your Name"></div>
-        <div class="form-group"><label class="form-label">Roll Number</label><input type="text" name="roll" class="form-input" required placeholder="e.g. 2005045"></div>
-        <div class="form-group"><label class="form-label">Merit Position</label><input type="text" name="merit" class="form-input" placeholder="e.g. 42nd"></div>
-        <div class="form-group"><label class="form-label">Facebook Profile URL</label><input type="url" name="fb" class="form-input" placeholder="https://facebook.com/username"></div>
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" name="name" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Roll Number</label><input type="text" name="roll" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Merit Position</label><input type="text" name="merit" class="form-input"></div>
+        <div class="form-group"><label class="form-label">Facebook Profile URL</label><input type="url" name="fb" class="form-input"></div>
       `;
     }
-    
     document.getElementById('dynamic-form-fields').innerHTML = fieldsHtml;
     document.getElementById('form-modal').classList.add('open');
   }
@@ -468,39 +446,13 @@
   function closeFormModal() {
     document.getElementById('form-modal').classList.remove('open');
     document.getElementById('submissionForm').reset();
+    submitted = false;
   }
 
-  async function handleFormSubmit(e) {
-    e.preventDefault();
-    const submitBtn = document.getElementById('submitFormBtn');
-    submitBtn.innerText = "Submitting...";
-    submitBtn.disabled = true;
-
-    // 🔥 URLSearchParams দিয়ে ফর্ম ডেটাকে স্ট্যান্ডার্ড কোয়েরি স্ট্রিংয়ে কনভার্ট করা হচ্ছে
-    const formData = new FormData(e.target);
-    const searchParams = new URLSearchParams();
-    
-    for (const pair of formData.entries()) {
-      searchParams.append(pair[0], pair[1]);
-    }
-
-    try {
-      // 🚀 text/plain মেথড এবং ব্রাউজারের কোনো রিডাইরেকশন ঝামেলা ছাড়াই গুগলে সাবমিট হবে
-      await fetch(CONFIG.GAS_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-        body: searchParams.toString()
-      });
-      
-      showToast("Submission Received!", "Your data is successfully queued for Admin approval.");
-    } catch (err) {
-      // গুগল স্ক্রিপ্ট ও ব্রাউজারের নো-কোরস এরর আসলেও ডেটা শীটে ঢুকে যাবে, তাই এখানেও সাকসেস মেসেজ ট্রিপ করা হল
-      showToast("Submission Received!", "Successfully pushed to Google Sheets backend.");
-    }
-
+  function handleSubmissionSuccess() {
+    showToast("Submission Received!", "Pending admin approval before going live.");
     closeFormModal();
-    submitBtn.innerText = "Submit to Admin";
-    submitBtn.disabled = false;
+    loadData(); 
   }
 
   function showToast(title, msg) {
