@@ -216,7 +216,7 @@
 
 <main class="main-wrap">
   <div class="page-hero">
-    <h1>ইঞ্জিনিয়ার্স<br><span>ডেক</span></h1>
+    <h1>ইঞ্জিনিয়ার্স<br><span>ডেক</span></h1>
     <p>// CE '25 · Khulna University of Engineering & Technology</p>
   </div>
 
@@ -274,9 +274,9 @@
 </div>
 
 <script>
-  // ⚡ তোর নতুন লাইভ লিঙ্ক এবং ডেমো মোড ফলস সেট করা হলো
+  // ⚡ তোর নতুন সাকসেসফুল লাইভ লিঙ্ক এখানে সেট করা হলো
   const CONFIG = {
-    GAS_URL: 'https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSggCzZCZseAWsmjtFQ6NXahLoE78llwhvQUEgbczjU8eRbCvfPMXKAD61aZ_KfxWJF9OYW49iL9Bdqj9xOHi1DJsuY-wQZYOZqsO_EzalH7hcEcgG5BBx2CwCSfx_qT8X0pIQc100DrBMTuIvCYV7uLtChZB61PyNd0hmUt_kLf3Sv6hKoyfrZj0ugbGeOUouiqJk5kAGig5sNEW4HjuB6HGcxQHBpdeK2EsfvUrR44nSp9WMjZ-IOP9Qdxb_v8P-hCJUPHSimmMVbhjk3I_dptBegQw&lib=MzNYMknpAX-Dd42ufZV8_VK9yAPQDXoUs',
+    GAS_URL: 'https://script.google.com/macros/s/AKfycbzJBXFcoKHSlPf4q-fKggOFfUyXh2XLUH8vSS9b9vurJ4ubKNx_sl-LoxEzBy8hzhOs/exec',
     DEMO_MODE: false,
   };
 
@@ -483,10 +483,10 @@
     dataObj['status'] = 'pending';
 
     try {
+      // 🚀 'no-cors' মোড রিমুভ করে স্ট্যান্ডার্ড text/plain মেথডে ডাটা সাবমিট করা হলো
       await fetch(CONFIG.GAS_URL, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(dataObj)
       });
       
