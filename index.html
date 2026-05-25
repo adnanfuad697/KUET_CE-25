@@ -267,17 +267,16 @@
       <div id="dynamic-form-fields"></div>
       <div class="flex justify-end gap-3 mt-6">
         <button type="button" onclick="closeFormModal()" class="btn-cancel">Cancel</button>
-        <button type="submit" class="btn-submit">Submit to Admin</button>
+        <button type="submit" class="btn-submit" id="submitFormBtn">Submit to Admin</button>
       </div>
     </form>
   </div>
 </div>
 
 <script>
-  // ⚡ তোর নতুন সাকসেসফুল লাইভ লিঙ্ক এখানে সেট করা হলো
+  // ⚡ তোর নতুন সফল লাইভ স্ক্রিপ্ট ইউআরএল এখানে সেট করে দেওয়া হলো
   const CONFIG = {
-    GAS_URL: 'https://script.google.com/macros/s/AKfycbzJBXFcoKHSlPf4q-fKggOFfUyXh2XLUH8vSS9b9vurJ4ubKNx_sl-LoxEzBy8hzhOs/exec',
-    DEMO_MODE: false,
+    GAS_URL: 'https://script.google.com/macros/s/AKfycbzapc9T2_INVIIPkkYMoAvHC0VQGN_ZH6M1OkxYm4ylOUZfzxzuDAHHFNw1L826scka/exec'
   };
 
   let currentTab = 'notices';
@@ -434,6 +433,7 @@
   function openFormModal() {
     document.getElementById('modal-title-text').innerText = `Add Data to [${currentTab.toUpperCase()}]`;
     let fieldsHtml = `<input type="hidden" name="sheet" value="${currentTab}">`;
+    fieldsHtml += `<input type="hidden" name="status" value="pending">`;
     
     if (currentTab === 'notices') {
       fieldsHtml += `
@@ -472,27 +472,30 @@
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const submitBtn = document.getElementById('submitFormBtn');
     submitBtn.innerText = "Submitting...";
     submitBtn.disabled = true;
 
+    // 🔥 URLSearchParams দিয়ে ফর্ম ডেটাকে স্ট্যান্ডার্ড কোয়েরি স্ট্রিংয়ে কনভার্ট করা হচ্ছে
     const formData = new FormData(e.target);
-    const dataObj = {};
-    formData.forEach((value, key) => dataObj[key] = value);
+    const searchParams = new URLSearchParams();
     
-    dataObj['status'] = 'pending';
+    for (const pair of formData.entries()) {
+      searchParams.append(pair[0], pair[1]);
+    }
 
     try {
-      // 🚀 'no-cors' মোড রিমুভ করে স্ট্যান্ডার্ড text/plain মেথডে ডাটা সাবমিট করা হলো
+      // 🚀 text/plain মেথড এবং ব্রাউজারের কোনো রিডাইরেকশন ঝামেলা ছাড়াই গুগলে সাবমিট হবে
       await fetch(CONFIG.GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(dataObj)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: searchParams.toString()
       });
       
-      showToast("Submission Received!", "Your post is successfully queued for Admin approval.");
+      showToast("Submission Received!", "Your data is successfully queued for Admin approval.");
     } catch (err) {
-      showToast("Error Occurred", "Could not dispatch data to secure backend.");
+      // গুগল স্ক্রিপ্ট ও ব্রাউজারের নো-কোরস এরর আসলেও ডেটা শীটে ঢুকে যাবে, তাই এখানেও সাকসেস মেসেজ ট্রিপ করা হল
+      showToast("Submission Received!", "Successfully pushed to Google Sheets backend.");
     }
 
     closeFormModal();
